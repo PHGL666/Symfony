@@ -19,6 +19,12 @@ php bin/console
 
 obs : en installant l'orm Doctrine nous verrons que des commandes supp apparaîtront.
 
+### Afficher les commandes Symfoni
+
+```shell
+php bin/console
+```
+
 ### Vérifier les pré-requis
 ```shell
 composer require requirements-checker
@@ -47,3 +53,19 @@ php bin/console server:start
 php bin/console server:stop
 ```
 
+### Installer Maker Bundel
+```shell
+composer require maker --dev
+```
+
+nous voyons que des commandes "make" supp ont été installées. Avec php bin/console list make nous pouvons les afficher.
+
+obs : la bibliotheque config/packages/bundles.php s'incrémente automatiquement
+
+INSTALLATION TERMINEE
+
+## Doctrine
+
+```shell
+composer req orm
+```
