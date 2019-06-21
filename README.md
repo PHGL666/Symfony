@@ -70,6 +70,10 @@ INSTALLATION TERMINEE
 composer req orm
 ```
 
+```shell
+composer require orm
+```
+
 **Appeler la BDD :**
 dans le dossier vendor/.env nous avons la ligne DATABASE_URL
 il ne faut pas modifier ce fichier donc nous créons un nouveau fichier .env.local dans lequel nous copions la ligne DATABASE et on met à jour la ligne qui fait appel à la BDD
@@ -78,3 +82,36 @@ DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 .env.local :
 DATABASE_URL=mysql://root:@127.0.0.1:3306/symfony
 
+obs : les commandes intègrent dorénavant celle de Doctrine : php bin/console list doctrine
+
+## Création
+
+Créer la base de données (vide) :
+
+```shell
+php bin/console doctrine:database:create
+```
+
+Pour la supprimer :
+
+```shell
+php bin/console doctrine:database:drop --force
+```
+
+### Création CODE FIRST : 
+
+**Créer les fichiers Entity avec Maker**
+exemple : fichier category
+```shell
+php bin/console make:entity Category
+```
+puis on ajoute les colonnes de la table.
+
+puis on créé le fichier de migration
+```shell
+php bin/console make:migration
+```
+puis on procède à la migration du/des fichiers
+```shell
+php bin/console doctrine:migrations:migrate
+```
