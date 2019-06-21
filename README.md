@@ -69,3 +69,12 @@ INSTALLATION TERMINEE
 ```shell
 composer req orm
 ```
+
+**Appeler la BDD :**
+dans le dossier vendor/.env nous avons la ligne DATABASE_URL
+il ne faut pas modifier ce fichier donc nous créons un nouveau fichier .env.local dans lequel nous copions la ligne DATABASE et on met à jour la ligne qui fait appel à la BDD
+.env : 
+DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+.env.local :
+DATABASE_URL=mysql://root:@127.0.0.1:3306/symfony
+
