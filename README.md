@@ -116,3 +116,25 @@ puis on procède à la migration du/des fichiers
 ```shell
 php bin/console doctrine:migrations:migrate
 ```
+
+## Création des fixtures (données de test dans la BDD)
+
+installer le bundle suivant :
+```shell
+composer require --dev orm-fixtures
+```
+
+Dans DataFixtures/AppFixtures.php 
+=> pas soucis de lisibilité nous le supprimons et le récréons avec maker pour le renommer.
+```shell
+php bin/console make:fixtures
+```
+nous créons dons un fichier que nous allons nommer CategoryFixtures.
+
+Dans ce fichier nous ajoutons des données manuellement
+> ajouter le use
+> ajouter les données
+
+```shell
+php bin/console doctrine:fixtures:load
+```

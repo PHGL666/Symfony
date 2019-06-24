@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\HasLifecycleCallbacks
  */
 class Article
 {
@@ -164,19 +164,18 @@ class Article
     }
 
     /**
-     * @ORM|PrePersist
+     * @ORM\PrePersist
      */
     public function prePersist()
     {
         $this->setCreatedAt(new \DateTime());
     }
 
-    /** 
-     * @ORM|PreUpdate
+    /**
+     * @ORM\PreUpdate
      */
     public function preUpdate()
     {
         $this->setUpdatedAt(new \DateTime());
     }
-
 }
