@@ -5,12 +5,13 @@
 ```
 composer create-project symfony/skeleton my-project
 ```
-
+que le squelette
 ou
 
 ```
 composer create-project symfony/website-skeleton my-project
 ```
+twig et divers package en plus du squelette
 
 Activer le plugin Symfony dans PHPStorm pour que l'autocomplétion soit activée.
 
@@ -19,7 +20,7 @@ php bin/console
 
 obs : en installant l'orm Doctrine nous verrons que des commandes supp apparaîtront.
 
-### Afficher les commandes Symfoni
+### Afficher les commandes Symfony
 
 ```shell
 php bin/console
@@ -98,7 +99,7 @@ Pour la supprimer :
 php bin/console doctrine:database:drop --force
 ```
 
-### Création CODE FIRST : 
+### Création Entity CODE FIRST : 
 
 **Créer les fichiers Entity avec Maker**
 exemple : fichier category
