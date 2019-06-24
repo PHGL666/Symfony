@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h1>Page d'accueil</h1>
+
+    <section>
+        {% for article in articles %}
+            <article>
+                <h2>{{ article.title }}</h2>
+                <a href="{{ path('article_show', { id: article.id }) }}">Voir plus</a>
+            </article>
+        {% endfor %}
+    </section>
+
+{% endblock %}

@@ -147,3 +147,31 @@ getReference
 Pour que les données soient chargées dans le bon ordre, il faut implémenter une méthode dans la class :
 implements DependentFixtureInterface
 
+## ROUTEUR - CONTROLEUR - VUE
+
+> Créer un contrôleur avec le make
+```shell
+php bin/console make:controller
+```
+ensuite avec /default dans l'url cela affiche le message du controller.
+
+Si sur serveur Apache il faut au préalable installer le pack suivant :
+```shell
+composer require symfony/apache-pack
+```
+
+> Installer TWIG Template
+```shell
+ composer req twig
+```
+
+OBS : pour pouvoir faire fonctionner les @Param converter, il faut installer
+```shell
+composer req annotations
+```
+
+## PROFILER PACK
+installe la barre de debug qui apparait dans le navigateur en bas
+```shell
+composer req profiler --dev
+```
