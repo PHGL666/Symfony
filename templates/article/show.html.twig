@@ -7,8 +7,20 @@
     <h1>{{ article.title }}</h1>
 
     <p>
-        Catégorie : {{ article.category.label }}
+        Catégorie : <a href="{{ path('category_show', {'id': article.category.id}) }}">{{ article.category.label }}</a>
+
     </p>
 
+    <ul>Liste des Tags :
+            {% for tag in article.tags %}
+                <li>{{ tag.label }}</li>
+            {% endfor %}
+    </ul>
+
+    <ul>Liste des Catégories :
+        {% for category in article.category %}
+                <li>{{ category.label }}</li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}

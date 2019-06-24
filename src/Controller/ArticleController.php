@@ -24,6 +24,7 @@ en utilisant le param converter on remplace (int $id) par (Article $article) et 
     {
         return $this->render('article/show.html.twig', [
             'article' => $article,
+            'category' => $article->getCategory(),
         ]);
     }
 }
