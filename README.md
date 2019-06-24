@@ -138,3 +138,12 @@ Dans ce fichier nous ajoutons des données manuellement
 ```shell
 php bin/console doctrine:fixtures:load
 ```
+
+Pour appeler les données d'un fichier fixtures à un autre il faut employer le 
+setReference
+et le 
+getReference
+
+Pour que les données soient chargées dans le bon ordre, il faut implémenter une méthode dans la class :
+implements DependentFixtureInterface
+
