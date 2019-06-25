@@ -175,3 +175,46 @@ installe la barre de debug qui apparait dans le navigateur en bas
 ```shell
 composer req profiler --dev
 ```
+
+
+---
+
+**OBS :** un include appelle seulement un template mais pas la base de donnée.
+On utilise donc une méthode spécifique RENDER(CONTROLLER :
+{{render(controller('cheminducontrolleurrouteur'))}}
+
+exemple avec le footer. 
+
+---
+
+# WEBPACK ENCORE & NPM RUN WATCH // SCSS
+permet de compiler les fichiers scss dans symfony
+
+installation Webpack Encore :
+```shell
+composer req encore
+```
+
+installation NPM :
+```shell
+npm install
+```
+
+> dans dossier racine fichier webpack.config.js on doit décommenter les lignes que l'on souhaite pour les activer
+exemple ici ligne 57 pour autoriser l'utilisation du compilateur sass
+
+du coup il faut installer sass loader 
+```shell
+npm install sass-loader@^7.0.1 node-sass --save-dev
+```
+
+> dans assets/css on renomme fichier app.css en scss
+> dans assets/js dans le fichier app.js on renomme .css en scss dans le require ligne 9
+
+puis pour la compilation des fichiers :
+```shell
+npm run watch
+```
+
+---
+

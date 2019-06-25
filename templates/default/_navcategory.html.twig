@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+        {% for category in categories %}
+            <li>
+                <a href="{{ path('category_show', {'id': category.id}) }}">
+                    {{ category.label }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
