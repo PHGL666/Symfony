@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+        {% for tag in tags %}
+            <li>
+                <a href="{{ path('tag_show', {'id': tag.id}) }}">
+                    {{ tag.label }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

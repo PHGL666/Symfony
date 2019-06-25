@@ -139,6 +139,8 @@ Dans ce fichier nous ajoutons des données manuellement
 php bin/console doctrine:fixtures:load
 ```
 
+OBS : il faut refaire la commande fixtures:load en cas de modification manuelle des fichiers fixtures.
+
 Pour appeler les données d'un fichier fixtures à un autre il faut employer le 
 setReference
 et le 
@@ -187,7 +189,7 @@ exemple avec le footer.
 
 ---
 
-# WEBPACK ENCORE & NPM RUN WATCH // SCSS
+## WEBPACK ENCORE & NPM RUN WATCH // SCSS
 permet de compiler les fichiers scss dans symfony
 
 installation Webpack Encore :
@@ -217,4 +219,16 @@ npm run watch
 ```
 
 ---
+obs : code Ajax, c'est le javascript qui appelle le serveur
 
+## Images statiques versus Images Dynamique
+
+### Images Statiques :
+il convient pour ces dernières de procéder de façon automatique. Dans webpack.config.js on ajoute une méthode copyFiles afin de copier les images de asset à images dans public/build, qui sera généré automatique et se mettre à jour automatiquement grâce au npm run watch.
+
+### Images Dynamique
+images de la bdd.
+
+nous créons dossier uploads dans lequel nous copions les images "dynamiques".
+
+Exemple dans templates/article/show.html.twig

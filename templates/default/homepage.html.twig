@@ -1,5 +1,21 @@
 {% extends "base.html.twig" %}
 
+{% block sidebar %}
+    <article>
+        <h3>Catégories</h3>
+            {{ render(controller(
+                'App\\Controller\\DefaultController::navCategory'
+            )) }}
+    </article>
+    <article>
+        <h3>Tags</h3>
+            {{ render(controller(
+                'App\\Controller\\DefaultController::navTag'
+            )) }}
+    </article>
+{% endblock %}
+
+
 {% block body %}
 
     <h1>Page d'accueil</h1>

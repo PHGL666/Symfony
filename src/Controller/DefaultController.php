@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Tag;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
@@ -27,6 +29,15 @@ class DefaultController extends AbstractController
 
         return $this->render("default/_navcategory.html.twig", [
            "categories" => $categories
+        ]);
+    }
+
+    public function navTag()
+    {
+        $tags = $this->getDoctrine()->getRepository(Tag::class)->findAll();
+
+        return $this->render("default/_navtag.html.twig", [
+            "tags" => $tags
         ]);
     }
 }
