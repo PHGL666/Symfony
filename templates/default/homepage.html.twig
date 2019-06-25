@@ -6,10 +6,7 @@
 
     <section>
         {% for article in articles %}
-            <article>
-                <h2>{{ article.title }}</h2>
-                <a href="{{ path('article_show', { id: article.id }) }}">Voir plus</a>
-            </article>
+            {% include 'article/_thumbnail.html.twig' with { 'article': article } only %}
         {% endfor %}
     </section>
 

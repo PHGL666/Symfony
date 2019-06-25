@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ tag.label }}{% endblock %}
+
+{% block body %}
+
+    <h1>{{ tag.label }}</h1>
+
+    {% for article in tag.articles %}
+        {% include 'article/_thumbnail.html.twig' with { 'article': article } only %}
+    {% endfor %}
+
+{% endblock %}

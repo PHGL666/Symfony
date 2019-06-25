@@ -5,18 +5,18 @@
 {% block body %}
 
     <h1>{{ article.title }}</h1>
-
     <p>
         Catégorie : <a href="{{ path('category_show', {'id': article.category.id}) }}">{{ article.category.label }}</a>
-
     </p>
 
-    <ul>Liste des Tags :
-            {% for tag in article.tags %}
-                <li>{{ tag.label }}</li>
-            {% endfor %}
+    <ul>
+        {% for tag in article.tags %}
+            <li>
+                <a href="{{ path('tag_show', {'id': tag.id}) }}">
+                    {{ tag.label }}
+                </a>
+            </li>
+        {% endfor %}
     </ul>
-
-
 
 {% endblock %}

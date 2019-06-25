@@ -7,11 +7,7 @@
 
         <ul>Liste des articles :
                 {% for article in category.articles %}
-                        <article>
-                                <a href="{{ path('article_show', {'id': article.id}) }}">
-                                        {{ article.title }}
-                                </a>
-                        </article>
+                        {% include 'article/_thumbnail.html.twig' with { 'article': article } only %}
                 {% endfor %}
         </ul>
 
