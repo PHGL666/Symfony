@@ -232,3 +232,17 @@ images de la bdd.
 nous créons dossier uploads dans lequel nous copions les images "dynamiques".
 
 Exemple dans templates/article/show.html.twig
+
+---
+obs : fonction dump, ex dump($articles); permet d'afficher sur le nav le contenu de la variable.
+
+
+## FORMULAIRES
+
+obs :
+```shell
+composer req form
+composer req validator
+```
+
+objet formbuilder

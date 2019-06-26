@@ -18,6 +18,8 @@ class DefaultController extends AbstractController
     {
         $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
 
+        /* dump($articles); */
+
         return $this->render("default/homepage.html.twig", [
             "articles" => $articles
         ]);
