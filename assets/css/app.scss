@@ -1,7 +1,49 @@
 body {
-    background-color: hotpink;
+    background-color: yellow;
     .main-content {
         display: flex;
         justify-content: space-between;
+    }
+}
+
+.main-content{
+    display: flex;
+    justify-content: space-between;
+    color: #ffbc00;
+}
+h1 {
+    color: #ffbc00;
+}
+
+a {
+    color: #ffbc00;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #E8E8E6;
+    border: 3px solid #daa423;
+    border-radius: 10px;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+    background-color: #daa423;
+    color: white;
+}
+
+main{
+    div{
+        margin-bottom: 10px;
     }
 }

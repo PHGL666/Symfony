@@ -239,6 +239,7 @@ obs : fonction dump, ex dump($articles); permet d'afficher sur le nav le contenu
 
 ## FORMULAIRES
 
+### Installation des pack form & validator
 obs :
 ```shell
 composer req form
@@ -246,3 +247,13 @@ composer req validator
 ```
 
 objet formbuilder
+
+### Validation du formulaire
+créer un use dans Entity/Category.php :
+use Symfony\Component\Validator\Constraints as Assert;
+rajouter dans les annotations de ce même fichier ligne 24, exemple : 
+* @Assert\iban
+on peut insérer autant d'Assert que l'on veut.
+
+---
+obs : ctrl + alt + o   =  supprime automatiquement les use inutiles
