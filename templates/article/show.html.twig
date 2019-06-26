@@ -19,6 +19,17 @@
         {% endfor %}
     </ul>
 
+    <section>
+        {% for comment in comments %}
+            <article>
+                <em>{{ comment.createdAt|date('d-m-y h-i-s') }}</em>
+                <p>{{ comment.content }}</p>
+            </article>
+        {% endfor %}
+    </section>
+
     <img src="{{ asset('uploads/' ~ article.picture) }}" alt="">
-    
+
+
+
 {% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Comment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,9 +23,11 @@ en utilisant le param converter on remplace (int $id) par (Article $article) et 
 */
     public function show(Article $article)
     {
+        $comments = $this->getDoctrine()->getRepository(Comment::class)->findBy(['article' => $article], ['createdAt' => 'DESC']);
+
         return $this->render('article/show.html.twig', [
             'article' => $article,
-            'category' => $article->getCategory(),
+            'comments' => $comments
         ]);
     }
 }

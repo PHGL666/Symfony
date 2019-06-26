@@ -18,6 +18,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article1->setCategory($this->getReference("cat-devweb"));
         $article1->addTag($this->getReference("tag-PHP"));
         $manager->persist($article1);
+        $this->setReference("article-1", $article1);
 
         $article2 = new Article();
         $article2->setTitle("Créer un site en PHP");
@@ -29,6 +30,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article2->addTag($this->getReference("tag-HTML"));
         $article2->addTag($this->getReference("tag-MySQL"));
         $manager->persist($article2);
+        $this->setReference("article-2", $article2);
 
         $article3 = new Article();
         $article3->setTitle("Tuto Photoshop");
@@ -36,6 +38,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article3->setContent("Ouvrir le logiciel Photoshop...");
         $article3->setCategory($this->getReference("cat-design"));
         $manager->persist($article3);
+        $this->setReference("article-3", $article3);
 
         $manager->flush();
     }
