@@ -1,5 +1,5 @@
 body {
-    background-color: yellow;
+    background-color: rgba(147, 147, 138, 0.43);
     .main-content {
         display: flex;
         justify-content: space-between;
@@ -45,5 +45,11 @@ li a:hover {
 main{
     div{
         margin-bottom: 10px;
+    }
+}
+
+table{
+    td{
+        border: 1px solid black;
     }
 }
