@@ -17,6 +17,7 @@ class CategoryType extends AbstractType
             ->add("label", TextType::class, [
                 'attr' => ['placeholder' => 'Nom de la catégorie']
             ])
+            ->add("articles")
             ->add("save", SubmitType::class, ['label' => 'Enregistrer'])        ;
     }
 

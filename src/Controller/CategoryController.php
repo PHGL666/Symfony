@@ -40,7 +40,7 @@ class CategoryController extends AbstractController
             return $this ->redirectToRoute('homepage');
         }
 
-        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findBy([], ['label' => 'ASC']);
 
         return $this->render("category/new.html.twig", [
             'form' => $form->createView(),
@@ -78,7 +78,8 @@ class CategoryController extends AbstractController
         }
 
         return $this->render("category/edit.html.twig", [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'category' => $category
         ]);
     }
 }

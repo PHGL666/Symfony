@@ -178,4 +178,11 @@ class Article
     {
         $this->setUpdatedAt(new \DateTime());
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
+
 }
