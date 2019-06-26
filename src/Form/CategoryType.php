@@ -18,7 +18,7 @@ class CategoryType extends AbstractType
                 'attr' => ['placeholder' => 'Nom de la catégorie']
             ])
             ->add("articles")
-            ->add("save", SubmitType::class, ['label' => 'Enregistrer'])        ;
+            ->add("save", SubmitType::class, ['label' => 'Enregistrer']);
     }
 
     public function configureOptions(OptionsResolver $resolver)
