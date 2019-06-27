@@ -21,7 +21,11 @@
 
     <h3>Commentaires :</h3>
 
-    {{ render(controller('App\\Controller\\CommentController::new', { 'article': article })) }}
+    {% if app.user %}
+        {{ render(controller('App\\Controller\\CommentController::new', { 'article': article })) }}
+    {% else %}
+        <p>Veuillez vous <a href="{{ path('app_login') }}">connecter</a></p>
+    {% endif %}
 
     <section>
         {% for comment in comments %}

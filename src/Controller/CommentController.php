@@ -32,13 +32,20 @@ class CommentController extends AbstractController
     public function new(Article $article, Request $request): Response
     {
         $comment = new Comment();
-        $comment->setArticle($article);
 
         $actionUrl = $this->generateUrl('comment_new', ['id' => $article->getId()]);
         $form = $this->createForm(CommentType::class, $comment, ['action' => $actionUrl]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Vérifier si l'utilisateur est connecté
+            if ($this->getUser()) {
+                throw $this->createAccessDeniedException("Vous devez être connecté");
+            }
+
+            $comment->setArticle($article);
+            $comment->setUser($this->getUser());
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();

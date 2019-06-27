@@ -337,3 +337,9 @@ RESPECTER l'INDENTATION SINON ERREUR
 app_logout:
   path: /logout
   methods: GET
+  
+---
+OBS : pour pouvoir créer un commentaire, il faut associer la création d'un commentaire à l'utilisateur en cours. Dans CommentController.php il faut ajouter donc la ligne :
+$comment->setUser($this->getUser());
+
+
