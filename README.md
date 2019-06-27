@@ -304,7 +304,7 @@ création d'un utilisateur dans Entity
 php bin/console make:user
 ```
 
-
+---
 OBS : pour VIDER la base de donnée et la RECREER :
 ```shell
 php bin/console doctrine:database:drop --force
@@ -312,3 +312,28 @@ php bin/console doctrine:database:drop --force
 php bin/console doctrine:database:create
 
 ```
+
+## Générer le formulaire d'AUTHENTIFICATION 
+## CREER LOGIN / LOGOUT
+génération du dossier Security et update du fichier security.yaml
+```shell
+php bin/console make:auth
+```
+nom du fichier php : LoginFormAuthenticator
+
+### LOGIN
+dans le fichier crée ici LoginFormAuthentificator
+supprimer ligne 89
+mettre à jour ligne 88
+
+### LOGOUT
+**security.yaml**
+on ajoute à ligne 22
+            logout:
+                path:   app_logout
+RESPECTER l'INDENTATION SINON ERREUR
+               
+**routes.yaml**
+app_logout:
+  path: /logout
+  methods: GET
