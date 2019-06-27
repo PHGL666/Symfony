@@ -354,3 +354,17 @@ l'accent circonflexe ^ veut dire COMMENCE PAR
 ```shell
 php bin/console make:registration-form
 ```
+
+#BUNDLE ADMIN
+
+```shell
+composer require admin
+```
+
+dans le fichier
+translation.yaml => modifier la langue en fr
+esay_admin.yaml => tout décommenter et rajouter le cas échéant les Entity qui manquent.
+
+dans l'url du nav accéder à l'admin avec SERVEUR/admin
+
+
