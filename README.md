@@ -272,3 +272,35 @@ puis
 ```shell
 php bin/console make:crud
 ```
+
+---
+
+# Installation Bootstrap plus popper et jquerry
+
+```shell
+ npm install bootstrap
+
+npm install jquery popper.js
+```
+
+puis dans assets/css/app.scss on ajoute la ligne 
+@import "~bootstrap/scss/bootstrap";
+qui permet d'importer le scss de bootstrap.
+
+puis dans app.js on active la ligne require de jquerry (ligne 12)
+et on rajoute la ligne 
+require('bootstrap');
+
+
+# SECURITY
+
+```shell
+composer req security
+```
+créé entre autre le fichier security.yaml dans config/packages/test/
+
+création d'un utilisateur dans Entity
+```shell
+php bin/console make:user
+```
+
