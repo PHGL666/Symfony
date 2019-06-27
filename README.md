@@ -343,3 +343,9 @@ OBS : pour pouvoir créer un commentaire, il faut associer la création d'un com
 $comment->setUser($this->getUser());
 
 
+dans security.yaml
+on décommente les 2 lignes pour qu'une personne non connecté ne puisse pas accéder à la page profile.
+l'accent circonflexe ^ veut dire COMMENCE PAR
+    access_control:
+          - { path: ^/admin, roles: ROLE_ADMIN }
+          - { path: ^/profile, roles: ROLE_USER }
