@@ -257,3 +257,18 @@ on peut insérer autant d'Assert que l'on veut.
 
 ---
 obs : ctrl + alt + o   =  supprime automatiquement les use inutiles
+
+
+# CRUD
+crud permet d'auto créer tous les fichiers php et twig, et les routes.
+
+
+installer au préalable la sécurité csrf
+```shell
+composer req security-csrf
+```
+
+puis
+```shell
+php bin/console make:crud
+```

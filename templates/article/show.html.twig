@@ -19,6 +19,10 @@
         {% endfor %}
     </ul>
 
+    <h3>Commentaires :</h3>
+
+    {{ render(controller('App\\Controller\\CommentController::new', { 'article': article })) }}
+
     <section>
         {% for comment in comments %}
             <article>
