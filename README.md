@@ -304,3 +304,11 @@ création d'un utilisateur dans Entity
 php bin/console make:user
 ```
 
+
+OBS : pour VIDER la base de donnée et la RECREER :
+```shell
+php bin/console doctrine:database:drop --force
+
+php bin/console doctrine:database:create
+
+```
