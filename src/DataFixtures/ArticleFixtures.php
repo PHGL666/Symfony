@@ -3,16 +3,29 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
+use App\Service\Slugger;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class ArticleFixtures extends Fixture implements DependentFixtureInterface
 {
+    private $slugger;
+
+    /**
+     * ArticleFixtures constructor.
+     * @param $slugger
+     */
+    public function __construct(Slugger $slugger)
+    {
+        $this->slugger = $slugger;
+    }
+
     public function load(ObjectManager $manager)
     {
         $article1 = new Article();
         $article1->setTitle("Nouvelle version de PHP");
+        $article1->setSlug($this->slugger->slugify($article1->getTitle()));
         $article1->setPicture("php.png");
         $article1->setContent("Lorem ipsum...");
         $article1->setCategory($this->getReference("cat-devweb"));
@@ -22,6 +35,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
 
         $article2 = new Article();
         $article2->setTitle("Créer un site en PHP");
+        $article2->setSlug($this->slugger->slugify($article2->getTitle()));
         $article2->setPicture("siteweb.png");
         $article2->setContent("Tuto pour créer un site en PHP...");
         $article2->setCategory($this->getReference("cat-devweb"));
@@ -34,6 +48,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
 
         $article3 = new Article();
         $article3->setTitle("Tuto Photoshop");
+        $article3->setSlug($this->slugger->slugify($article3->getTitle()));
         $article3->setPicture("photoshop.png");
         $article3->setContent("Ouvrir le logiciel Photoshop...");
         $article3->setCategory($this->getReference("cat-design"));

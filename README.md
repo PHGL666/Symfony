@@ -368,3 +368,45 @@ esay_admin.yaml => tout décommenter et rajouter le cas échéant les Entity qui
 dans l'url du nav accéder à l'admin avec SERVEUR/admin
 
 
+# SERVICE
+
+## Commandes
+
+```shell
+php bin/console list router
+
+php bin/console debug:router
+
+php bin/console debug:autowiring
+```
+
+création du dossier service
+
+## SLUGGER
+Slug = ce qu'on met dans l'url, on remplace les espace par un tiret par exemple etc.
+dans dossier service :
+création manuel fichier class slugger.php
+création de la méthode slugify + copie doc
+
+AJOUT DANS ARTICLE de FIXTURES d'une table slug
+validation des paramètres de création
+
+migrations + migrate
+
+Fixtures:
+ensuite dans ArticlesFixtures on ajoute le CONSTRUCT
+qu'on met à jour avec l'instanciation $this
+OBS : si on utilise l'autocomplétion le use se met à jour sinon rajouter manuellement le USE.
+puis mettre à jour les données articles avec exemple :
+$article1->setSlug($this->slugger->slugify($article1->getTitle()));
+
+_thumbnail.html.thig de ARTICLE
+remplacer les id par slug
+
+Controller:
+puis mise à jour du controller ArticleController
+on remplace id par slug
+on supprime requirement car il impose un id
+
+
+
