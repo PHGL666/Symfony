@@ -7,7 +7,6 @@ use App\Entity\Comment;
 use App\Form\ArticleType;
 use App\Service\Slugger;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,15 +14,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
 {
+
     /**
      * @Route("/article/new", name="article_new")
      * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request, Slugger $slugger)
     {
-        /*soit dans la route @IsGranted ou bien la ligne suivante ici :
-         * $this->denyAccessUnlessGranted('ROLE_ADMIN');*/
-
         $article = new Article();
 
         $form = $this->createForm(ArticleType::class, $article);
@@ -34,13 +31,14 @@ class ArticleController extends AbstractController
             /** @var UploadedFile $pictureFile */
             $pictureFile = $form["pictureFile"]->getData();
 
-            if ($pictureFile){
-                $filename = uniqid() . "." . $pictureFile->guessClientExtension();
+            if ($pictureFile) {
+                $filename = uniqid() . "." . $pictureFile->guessExtension();
                 $pictureFile->move($this->getParameter("upload_dir"), $filename);
                 $article->setPicture($filename);
             }
 
             $article->setSlug($slugger->slugify($article->getTitle()));
+            $article->setUser($this->getUser());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
@@ -66,4 +64,37 @@ class ArticleController extends AbstractController
             'comments' => $comments
         ]);
     }
+
+    /**
+     * @Route("/article/{slug}/edit", name="article_edit", methods={"GET", "POST"})
+     */
+    public function edit(Article $article, Request $request)
+    {
+        $form = $this->createForm(ArticleType::class, $article);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $pictureFile */
+            $pictureFile = $form["pictureFile"]->getData();
+
+            if ($pictureFile) {
+                $filename = uniqid() . "." . $pictureFile->guessExtension();
+                $pictureFile->move($this->getParameter("upload_dir"), $filename);
+                $article->setPicture($filename);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+
+            return $this->redirectToRoute("article_show", ["slug" => $article->getSlug()]);
+        }
+
+        return $this->render('article/edit.html.twig', [
+            'form' => $form->createView(),
+            'article' => $article
+        ]);
+    }
+
 }

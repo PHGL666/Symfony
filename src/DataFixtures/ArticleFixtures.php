@@ -10,6 +10,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class ArticleFixtures extends Fixture implements DependentFixtureInterface
 {
+
     private $slugger;
 
     /**
@@ -21,6 +22,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $this->slugger = $slugger;
     }
 
+
     public function load(ObjectManager $manager)
     {
         $article1 = new Article();
@@ -30,6 +32,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article1->setContent("Lorem ipsum...");
         $article1->setCategory($this->getReference("cat-devweb"));
         $article1->addTag($this->getReference("tag-PHP"));
+        $article1->setUser($this->getReference("user-admin"));
         $manager->persist($article1);
         $this->setReference("article-1", $article1);
 
@@ -43,6 +46,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article2->addTag($this->getReference("tag-CSS"));
         $article2->addTag($this->getReference("tag-HTML"));
         $article2->addTag($this->getReference("tag-MySQL"));
+        $article2->setUser($this->getReference("user-john"));
         $manager->persist($article2);
         $this->setReference("article-2", $article2);
 
@@ -52,6 +56,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article3->setPicture("photoshop.png");
         $article3->setContent("Ouvrir le logiciel Photoshop...");
         $article3->setCategory($this->getReference("cat-design"));
+        $article3->setUser($this->getReference("user-john"));
         $manager->persist($article3);
         $this->setReference("article-3", $article3);
 
@@ -68,7 +73,8 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             CategoryFixtures::class,
-            TagFixtures::class
+            TagFixtures::class,
+            UserFixtures::class
         ];
     }
 }

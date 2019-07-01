@@ -5,10 +5,16 @@
 {% block body %}
 
     <h1>{{ article.title }}</h1>
+
+    {# MODIFIER UN ARTICLE#}
+    {% if app.user == article.user or is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('article_edit', {'slug': article.slug}) }}" class="btn btn-primary">Modifier</a>
+    {% endif %}
+
     <p>
         Catégorie : <a href="{{ path('category_show', {'id': article.category.id}) }}">{{ article.category.label }}</a>
     </p>
-
+    <p>Utilisateur : {{ article.user.email }}</p>
     <ul>
         {% for tag in article.tags %}
             <li>
@@ -37,7 +43,5 @@
     </section>
 
     <img src="{{ asset('uploads/' ~ article.picture) }}" alt="">
-
-
 
 {% endblock %}

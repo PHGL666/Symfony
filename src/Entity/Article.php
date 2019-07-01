@@ -25,8 +25,8 @@ class Article
     private $title;
 
     /**
- * @ORM\Column(type="string", length=255, nullable=true)
- */
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $picture;
 
     /**
@@ -65,6 +65,12 @@ class Article
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -93,7 +99,7 @@ class Article
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
 
@@ -175,27 +181,6 @@ class Article
     }
 
     /**
-     * @ORM\PrePersist
-     */
-    public function prePersist()
-    {
-        $this->setCreatedAt(new \DateTime());
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate()
-    {
-        $this->setUpdatedAt(new \DateTime());
-    }
-
-    public function __toString()
-    {
-        return $this->getTitle();
-    }
-
-    /**
      * @return Collection|Comment[]
      */
     public function getComments(): Collection
@@ -226,6 +211,27 @@ class Article
         return $this;
     }
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->setUpdatedAt(new \DateTime());
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -238,5 +244,16 @@ class Article
         return $this;
     }
 
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
 
 }

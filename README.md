@@ -408,5 +408,27 @@ puis mise à jour du controller ArticleController
 on remplace id par slug
 on supprime requirement car il impose un id
 
+# DESIGN PATTERNS
+
+
+
+OBS : 
+EN DE BUG ET BESOIN DE FAIRE MENAGE DANS LA BASE DE DONNE, procéder comme suit:
+```shell
+php bin/console doctrine:database:drop --force
+
+php bin/console doctrine:database:create
+
+php bin/console make:migration
+
+php bin/console doctrine:migrations:migrate
+
+php bin/console doctrine:fixtures:load
+```
+
+
+
+
+
 
 
